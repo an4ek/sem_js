@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat researcher</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+<!-- Приветственное окно -->
+<div id="welcome-screen" class="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-400 to-pink-500">
+    <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+        <h1 class="text-3xl font-bold mb-4 text-gray-800">Welcome to Cat Researcher!</h1>
+        <input id="user-name" type="text" placeholder="Enter your name" class="border p-2 rounded w-full mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500">
+        <button id="next-btn" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">Next</button>
+    </div>
+</div>
+
+<!-- Основная страница -->
+<div id="main-screen" class="hidden min-h-screen">
+    <header class="bg-purple-600 text-white p-4 shadow">
+        <h1 id="greeting" class="text-2xl font-bold"></h1>
+    </header>
+    <main class="container mx-auto p-4">
+        <div class="mb-4 flex flex-wrap gap-4">
+            <input id="breed-filter" type="text" placeholder="Filter by breed" class="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <input id="origin-filter" type="text" placeholder="Filter by origin" class="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <input id="weight-filter" type="text" placeholder="Min. weight (kg)" class="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <select id="sort-select" class="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <option value="name-asc">By name (A-Z)</option>
+                <option value="name-desc">By name (Z-A)</option>
+                <option value="life-asc">By life expectancy (ascending)</option>//возр
+                <option value="life-desc">By life expectancy (decrease)</option>//убыв
+            </select>
+            <button id="load-cats" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">Download breeds</button>
+            <button id="show-stats" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Show statistics</button>
+            <button id="clear-cache" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">Clear cache</button>
+        </div>
+        <div id="stats" class="hidden bg-white p-4 rounded shadow mb-4">
+            <h2 class="text-xl font-bold mb-2">Statistics</h2>
+            <p id="total-breeds"></p>
+            <p id="avg-life-span"></p>
+            <p id="avg-weight"></p>
+            <p id="unique-origins"></p>
+        </div>
+        <div id="cat-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg max-w-4xl w-full">
+                <h2 id="modal-title" class="text-2xl font-bold mb-4"></h2>
+                <div class="overflow-auto max-h-96">
+                    <img id="modal-image" class="w-full max-h-96 object-contain mb-4 rounded" alt="Cat">
+                </div>
+                <p id="modal-description" class="text-lg"></p>
+                <button id="close-modal" class="mt-4 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">Close</button>
+            </div>
+        </div>
+        <div class="mt-4">
+            <h2 class="text-xl font-bold mb-2">My Telegram bot</h2>
+            <p>Check out my Telegram bot for more cat fun! Find it at: <a href="https://t.me/tg" class="text-purple-600 hover:underline" target="_blank">@tg</a></p>
+        </div>
+    </main>
+</div>
+
+<script type="module" src="modules/main/main.js"></script>
+<script>
+    console.log('Сайт загружен, проверьте консоль для отладки');
+</script>
+</body>
+</html>
